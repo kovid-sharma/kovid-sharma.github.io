@@ -24,7 +24,7 @@ export function isExternalHttpHref(href: string) {
 
 export default function ExternalLink({ children, href, ...props }: Props) {
   if (!isExternalHttpHref(href)) {
-    throw new Error(`ExternalLink requires an off-site HTTP URL: ${href}`);
+    console.warn(`ExternalLink is rendering an internal or non-HTTP URL: ${href}`);
   }
 
   return (

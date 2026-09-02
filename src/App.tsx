@@ -1,11 +1,9 @@
 import { cn } from '@/lib/className';
 import { EASE_EXPO } from '@/lib/motion';
-import AudioToggle from '@components/AudioToggle';
 import Background from '@components/Background';
-import CursorTrail from '@components/CursorTrail';
 import MenuOverlay from '@components/MenuOverlay';
 import Navbar from '@components/Navbar';
-import SoundGate from '@components/SoundGate';
+import SystemBoot from '@components/SystemBoot';
 import { useRouterState } from '@tanstack/react-router';
 import { Analytics } from '@vercel/analytics/react';
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
@@ -28,8 +26,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
   return (
     <div className="relative min-h-screen">
       <Background showGrid={isHome} />
-      {isHome && <CursorTrail />}
-      <SoundGate />
+      <SystemBoot />
       <Navbar />
       <MenuOverlay />
 
@@ -68,8 +65,6 @@ export function AppShell({ children }: { children: React.ReactNode }) {
           </motion.div>
         </AnimatePresence>
       </main>
-
-      {!isPlayground && <AudioToggle />}
       <Analytics />
     </div>
   );

@@ -14,7 +14,7 @@ import {
 import { store, useStore } from '@/lib/store';
 import { Link, useRouterState } from '@tanstack/react-router';
 import { AnimatePresence, motion } from 'framer-motion';
-import { Github, Linkedin, Mail, Music2, X } from 'lucide-react';
+import { Github, Linkedin, Mail, Terminal, X } from 'lucide-react';
 import { useEffect } from 'react';
 
 const pages = [
@@ -23,7 +23,7 @@ const pages = [
   { label: 'consulting', to: '/consulting' },
   { label: 'writing', to: '/writing' },
   { label: 'resources', to: '/resources' },
-  { label: 'playground', to: '/playground' },
+  { label: 'terminal', to: '/playground' },
 ] as const;
 
 const EMAIL = 'kovid2020@gmail.com';
@@ -152,7 +152,7 @@ export default function MenuOverlay() {
                           }}
                         >
                           {p.to === '/playground' && (
-                            <Music2
+                            <Terminal
                               aria-hidden="true"
                               className="h-[0.8em] w-[0.8em] shrink-0"
                             />
