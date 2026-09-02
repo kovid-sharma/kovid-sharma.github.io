@@ -11,7 +11,7 @@ export default function SystemBoot() {
     
     // Automatically dismiss the loading screen after 1.5 seconds
     const timer = setTimeout(() => {
-      store.setSound('off');
+      store.setSound('on');
     }, 1500);
     
     return () => clearTimeout(timer);

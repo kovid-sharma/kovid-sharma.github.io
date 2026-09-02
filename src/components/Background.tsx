@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react';
+import { play, initAudio } from '@/lib/audio';
 
 export default function Background({ showGrid = false }: { showGrid?: boolean }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -11,6 +12,7 @@ export default function Background({ showGrid = false }: { showGrid?: boolean })
     if (!ctx) return;
 
     let particles: { x: number; y: number; vx: number; vy: number }[] = [];
+    const connectedToMouse = new Set<number>();
     let animationFrameId: number;
 
     const resize = () => {
@@ -45,6 +47,7 @@ export default function Background({ showGrid = false }: { showGrid?: boolean })
     window.addEventListener('resize', resize);
     window.addEventListener('mousemove', handleMouseMove);
     window.addEventListener('mouseleave', handleMouseLeave);
+    window.addEventListener('pointerdown', initAudio);
 
     resize();
 
@@ -88,6 +91,13 @@ export default function Background({ showGrid = false }: { showGrid?: boolean })
           ctx.moveTo(p.x, p.y);
           ctx.lineTo(mouse.x, mouse.y);
           ctx.stroke();
+          
+          if (!connectedToMouse.has(i)) {
+            connectedToMouse.add(i);
+            play('grid', (Math.random() - 0.5) * 800);
+          }
+        } else {
+          connectedToMouse.delete(i);
         }
 
         ctx.beginPath();
@@ -105,6 +115,7 @@ export default function Background({ showGrid = false }: { showGrid?: boolean })
       window.removeEventListener('resize', resize);
       window.removeEventListener('mousemove', handleMouseMove);
       window.removeEventListener('mouseleave', handleMouseLeave);
+      window.removeEventListener('pointerdown', initAudio);
       cancelAnimationFrame(animationFrameId);
     };
   }, []);
