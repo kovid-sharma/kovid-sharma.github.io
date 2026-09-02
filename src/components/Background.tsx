@@ -94,7 +94,8 @@ export default function Background({ showGrid = false }: { showGrid?: boolean })
           
           if (!connectedToMouse.has(i)) {
             connectedToMouse.add(i);
-            play('grid', (Math.random() - 0.5) * 800);
+            play('hover', (Math.random() - 0.5) * 800);
+            console.log('Star connected! Playing sound...');
           }
         } else {
           connectedToMouse.delete(i);
@@ -121,8 +122,8 @@ export default function Background({ showGrid = false }: { showGrid?: boolean })
   }, []);
 
   return (
-    <div className="fixed inset-0 z-0 bg-[#0a0a0a] transition-colors duration-500">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-neutral-800/20 via-neutral-900/10 to-transparent pointer-events-none" />
+    <div className="fixed inset-0 z-0 bg-neutral-50 dark:bg-[#0a0a0a] transition-colors duration-500">
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-neutral-200/50 via-neutral-100/30 dark:from-neutral-800/20 dark:via-neutral-900/10 to-transparent pointer-events-none" />
       <canvas
         ref={canvasRef}
         className="absolute inset-0 pointer-events-none"
