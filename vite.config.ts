@@ -15,7 +15,9 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 export default defineConfig({
   plugins: [
-    nitro(),
+    nitro({
+      preset: 'github-pages',
+    }),
     tailwindcss(),
     tanstackStart(),
     react(),
