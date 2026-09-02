@@ -69,7 +69,7 @@ export default function Background({ showGrid = false }: { showGrid?: boolean })
 
           if (dist < 120) {
             ctx.beginPath();
-            ctx.strokeStyle = `${lineColor}${0.15 - dist / 800})`;
+            ctx.strokeStyle = `${lineColor}${0.5 - dist / 240})`;
             ctx.lineWidth = 1;
             ctx.moveTo(p.x, p.y);
             ctx.lineTo(p2.x, p2.y);
@@ -83,7 +83,7 @@ export default function Background({ showGrid = false }: { showGrid?: boolean })
         
         if (distMouse < 150) {
           ctx.beginPath();
-          ctx.strokeStyle = `${lineColor}${0.3 - distMouse / 500})`;
+          ctx.strokeStyle = `${lineColor}${0.8 - distMouse / 187.5})`;
           ctx.lineWidth = 1.5;
           ctx.moveTo(p.x, p.y);
           ctx.lineTo(mouse.x, mouse.y);
