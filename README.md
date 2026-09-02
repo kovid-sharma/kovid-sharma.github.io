@@ -1,11 +1,14 @@
-## kovid-sharma.github.io
+# kovid-sharma.github.io
 
-Personal corner of the internet. Minimal design, quirky interactions. Representative of me.
+The personal portfolio and website of Kovid Sharma. 
 
-Built with TanStack Start, TanStack Router, Tailwind CSS, and Nitro.
+## Development
+
+Built with React, TanStack Start, Tailwind CSS, and Nitro.
+
+To run the project locally:
 
 ```bash
-bun run dev
-bun run build
-bun run start
+npm install
+npm run dev
 ```
