@@ -7,7 +7,7 @@ import { useTheme } from 'next-themes';
 import { useEffect } from 'react';
 
 // ponytail: set this to your public cal.com link, "username/event-slug".
-const CAL_LINK = 'kovid-sharma-pwnklu/15min';
+const CAL_LINK = 'kovid-sharma-pwnklu/quick-chat';
 const CAL_NAMESPACE = 'consulting';
 const EMAIL = 'kovid2020@gmail.com';
 
