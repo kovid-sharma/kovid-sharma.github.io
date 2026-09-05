@@ -70,10 +70,14 @@ export default function Background({ showGrid = false }: { showGrid?: boolean })
           const dy = p.y - p2.y;
           const dist = Math.sqrt(dx * dx + dy * dy);
 
-          if (dist < 120) {
+          const bothActive = connectedToMouse.has(i) && connectedToMouse.has(j);
+          const maxDist = bothActive ? 180 : 120;
+
+          if (dist < maxDist) {
             ctx.beginPath();
-            ctx.strokeStyle = `${lineColor}${0.5 - dist / 240})`;
-            ctx.lineWidth = 1;
+            const opacity = bothActive ? (0.8 - dist / (maxDist * 1.25)) : (0.5 - dist / 240);
+            ctx.strokeStyle = `${lineColor}${opacity})`;
+            ctx.lineWidth = bothActive ? 1.5 : 1;
             ctx.moveTo(p.x, p.y);
             ctx.lineTo(p2.x, p2.y);
             ctx.stroke();
@@ -97,13 +101,14 @@ export default function Background({ showGrid = false }: { showGrid?: boolean })
             play('hover', (Math.random() - 0.5) * 800);
             console.log('Star connected! Playing sound...');
           }
-        } else {
-          connectedToMouse.delete(i);
         }
 
+        const isActive = connectedToMouse.has(i);
         ctx.beginPath();
-        ctx.arc(p.x, p.y, 1.5, 0, Math.PI * 2);
-        ctx.fillStyle = isDark ? 'rgba(255, 255, 255, 0.5)' : 'rgba(0, 0, 0, 0.5)';
+        ctx.arc(p.x, p.y, isActive ? 2.5 : 1.5, 0, Math.PI * 2);
+        ctx.fillStyle = isActive 
+          ? (isDark ? 'rgba(255, 255, 255, 0.9)' : 'rgba(0, 0, 0, 0.9)')
+          : (isDark ? 'rgba(255, 255, 255, 0.5)' : 'rgba(0, 0, 0, 0.5)');
         ctx.fill();
       });
 

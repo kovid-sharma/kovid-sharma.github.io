@@ -35,7 +35,7 @@ const specs: Record<Blip, Spec> = {
     cutoff: 900,
     dur: 1.6,
     freq: 196,
-    gain: 0.05,
+    gain: 0.15,
     glide: 261.63,
     type: 'sine',
   },
@@ -44,7 +44,7 @@ const specs: Record<Blip, Spec> = {
     cutoff: 1200,
     dur: 0.22,
     freq: 523.25,
-    gain: 0.005,
+    gain: 0.015,
     type: 'sine',
   },
   hover: {
@@ -52,7 +52,7 @@ const specs: Record<Blip, Spec> = {
     cutoff: 1400,
     dur: 0.32,
     freq: 523.25,
-    gain: 0.014,
+    gain: 0.042,
     type: 'sine',
   },
   open: {
@@ -60,7 +60,7 @@ const specs: Record<Blip, Spec> = {
     cutoff: 1000,
     dur: 0.75,
     freq: 261.63,
-    gain: 0.045,
+    gain: 0.135,
     glide: 392,
     type: 'sine',
   },
@@ -69,7 +69,7 @@ const specs: Record<Blip, Spec> = {
     cutoff: 1200,
     dur: 0.4,
     freq: 392,
-    gain: 0.03,
+    gain: 0.09,
     type: 'triangle',
   },
 };
@@ -140,7 +140,7 @@ function context(): AudioContext | null {
   if (!ctx) {
     ctx = new Ctor();
     master = ctx.createGain();
-    master.gain.value = 0.85;
+    master.gain.value = 2.5;
 
     const limiter = ctx.createDynamicsCompressor();
     limiter.threshold.value = -10;
