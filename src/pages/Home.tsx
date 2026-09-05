@@ -164,7 +164,7 @@ function Contact() {
           website="Email"
         />
         <ContactLink
-          href="https://kovid-sharma.github.io"
+          href="/kovid_main.pdf"
           title="View"
           website="Resume"
         />
